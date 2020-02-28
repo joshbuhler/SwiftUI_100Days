@@ -31,7 +31,7 @@ struct ContentView: View {
         NavigationView {
             Form {
                 
-                VStack(alignment: .leading, spacing: 0) {
+                Section {
                     Text("When do you want to wake up?")
                         .font(.headline)
                 
@@ -41,7 +41,7 @@ struct ContentView: View {
                         .labelsHidden()
                 }
                 
-                VStack(alignment: .leading, spacing: 0) {
+                Section {
                     Text("How much sleep would you like?")
                         .font(.headline)
                     
@@ -50,7 +50,7 @@ struct ContentView: View {
                     }
                 }
                 
-                VStack(alignment: .leading, spacing: 0) {
+                Section {
                     Text("How much coffee did you drink?")
                         .font(.headline)
                     
