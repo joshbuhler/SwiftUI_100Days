@@ -27,10 +27,22 @@ struct ContentView: View {
         return Calendar.current.date(from: comps) ?? Date()
     }
     
+    var bedtime:String {
+        var comps = DateComponents()
+        comps.hour = 7
+        comps.minute = 0
+        
+        let bd = Calendar.current.date(from: comps) ?? Date()
+        
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        
+        return formatter.string(from: bd)
+    }
+    
     var body: some View {
         NavigationView {
             Form {
-                
                 Section {
                     Text("When do you want to wake up?")
                         .font(.headline)
@@ -61,6 +73,12 @@ struct ContentView: View {
                             Text("\(coffeeAmount) Cups")
                         }
                     }
+                }
+                
+                Section {
+                    Text("You should go to bed at…")
+                        .font(.headline)
+                    Text(bedtime)
                 }
             }
             .navigationBarTitle("BetterRest")
