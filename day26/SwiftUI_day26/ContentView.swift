@@ -30,23 +30,36 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
-                Text("When do you want to wake up?")
-                    .font(.headline)
                 
-                DatePicker("Enter a time:",
-                           selection: $wakeUp,
-                           displayedComponents: .hourAndMinute)
-                    .labelsHidden()
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("When do you want to wake up?")
+                        .font(.headline)
                 
-                Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
-                    Text("\(sleepAmount, specifier: "%g") hours")
+                    DatePicker("Enter a time:",
+                               selection: $wakeUp,
+                               displayedComponents: .hourAndMinute)
+                        .labelsHidden()
                 }
                 
-                Stepper(value: $coffeeAmount, in: 1...20) {
-                    if (coffeeAmount == 1) {
-                        Text("1 Cup")
-                    } else {
-                        Text("\(coffeeAmount) Cups")
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("How much sleep would you like?")
+                        .font(.headline)
+                    
+                    Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
+                        Text("\(sleepAmount, specifier: "%g") hours")
+                    }
+                }
+                
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("How much coffee did you drink?")
+                        .font(.headline)
+                    
+                    Stepper(value: $coffeeAmount, in: 1...20) {
+                        if (coffeeAmount == 1) {
+                            Text("1 Cup")
+                        } else {
+                            Text("\(coffeeAmount) Cups")
+                        }
                     }
                 }
             }
