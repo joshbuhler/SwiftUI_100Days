@@ -29,7 +29,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            Form {
                 Text("When do you want to wake up?")
                     .font(.headline)
                 
