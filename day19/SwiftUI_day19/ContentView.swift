@@ -3,7 +3,7 @@
 //  SwiftUI_day19
 //
 //  Created by Joshua Buhler on 2/11/20.
-//  Copyright © 2020 C4. All rights reserved.
+//  Copyright © 2020 Buhler.me. All rights reserved.
 //
 
 import SwiftUI
