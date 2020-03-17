@@ -14,16 +14,28 @@ struct ContentView: View {
     
     var body: some View {
         Button("Tap Me") {
-            self.animationAmount += 1.0
-        }.padding(50)
-            .background(Color.red)
-            .foregroundColor(Color.white)
-            .clipShape(Circle())
-            .scaleEffect(animationAmount)
-            .blur(radius: (animationAmount - 1) * 3)
-            .animation(
-                Animation.easeInOut(duration: 1).repeatCount(3, autoreverses: true)
+            //            self.animationAmount += 1.0
+        }
+        .padding(40)
+        .background(Color.red)
+        .foregroundColor(Color.white)
+        .clipShape(Circle())
+        .overlay(
+            Circle()
+                .stroke(Color.green)
+                .scaleEffect(animationAmount)
+                .opacity(Double(2 - animationAmount))
+                .animation(
+                    Animation.easeOut(duration: 5)
+                        .repeatForever(autoreverses: false)
+            )
         )
+            .onAppear {
+                print("on appear")
+                self.animationAmount = 2
+        }
+        
+        
     }
 }
 
