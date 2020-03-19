@@ -8,6 +8,22 @@
 
 import SwiftUI
 
+struct CornerRotateModifier: ViewModifier {
+    let amount:Double
+    let anchor:UnitPoint
+    
+    func body(content:Content) -> some View {
+        content.rotationEffect(.degrees(amount), anchor: anchor).clipped()
+    }
+}
+
+extension AnyTransition {
+    static var pivot: AnyTransition {
+        .modifier(active: CornerRotateModifier(amount: 90, anchor: .bottomLeading),
+                  identity: CornerRotateModifier(amount: 0, anchor: .bottomLeading))
+    }
+}
+
 struct ContentView: View {
     
 //    @State private var animationAmount:CGFloat = 1.0
@@ -21,7 +37,8 @@ struct ContentView: View {
     let letters = Array("Hello SwiftUI")
     
     var body: some View {
-        // Showing and hiding views with transitions
+        
+        // Building custom transitions using ViewModifier
         VStack {
             Button("Tap Me") {
                 // do nothing
@@ -34,7 +51,8 @@ struct ContentView: View {
                 Rectangle()
                     .fill(Color.red)
                     .frame(width: 200, height: 200)
-                    .transition(.asymmetric(insertion: .scale, removal: .opacity))
+                    .transition(.pivot)
+                //                    .transition(.asymmetric(insertion: .scale, removal: .opacity))
             }
         }
         
