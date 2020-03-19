@@ -16,28 +16,47 @@ struct ContentView: View {
     
     @State private var dragAmount = CGSize.zero
     
+    @State private var isShowingRed = false
+    
     let letters = Array("Hello SwiftUI")
     
     var body: some View {
-        
-        HStack(spacing: 0) {
-            ForEach(0..<letters.count) { num in
-                Text(String(self.letters[num]))
-                    .padding(5)
-                    .font(.title)
-                    .background(self.enabled ? Color.blue : Color.red)
-                    .offset(self.dragAmount)
-                    .animation(Animation.default.delay(Double(num) / 25))
+        // Showing and hiding views with transitions
+        VStack {
+            Button("Tap Me") {
+                // do nothing
+                withAnimation {
+                    self.isShowingRed.toggle()
+                }
+            }
+
+            if (isShowingRed) {
+                Rectangle()
+                    .fill(Color.red)
+                    .frame(width: 200, height: 200)
+                    .transition(.asymmetric(insertion: .scale, removal: .opacity))
             }
         }
-        .gesture(
-            DragGesture()
-                .onChanged { self.dragAmount = $0.translation }
-                .onEnded { _ in
-                    self.dragAmount = .zero
-                    self.enabled.toggle()
-                }
-        )
+        
+        // Animating Gestures
+//        HStack(spacing: 0) {
+//            ForEach(0..<letters.count) { num in
+//                Text(String(self.letters[num]))
+//                    .padding(5)
+//                    .font(.title)
+//                    .background(self.enabled ? Color.blue : Color.red)
+//                    .offset(self.dragAmount)
+//                    .animation(Animation.default.delay(Double(num) / 25))
+//            }
+//        }
+//        .gesture(
+//            DragGesture()
+//                .onChanged { self.dragAmount = $0.translation }
+//                .onEnded { _ in
+//                    self.dragAmount = .zero
+//                    self.enabled.toggle()
+//                }
+//        )
         
 //        Button("Tap Me") {
 //            //            self.animationAmount += 1.0
@@ -93,6 +112,7 @@ struct ContentView: View {
 //        .clipShape(Circle())
 //        .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z:1))
         
+        // Controlling the animation stack
 //        Button("Tap Me") {
 //            // do nothing
 //            self.enabled.toggle()
