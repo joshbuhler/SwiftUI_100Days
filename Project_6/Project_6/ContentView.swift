@@ -14,7 +14,31 @@ struct ContentView: View {
     @State private var animationAmount:Double = 1.0
     @State private var enabled = false
     
+    @State private var dragAmount = CGSize.zero
+    
+    let letters = Array("Hello SwiftUI")
+    
     var body: some View {
+        
+        HStack(spacing: 0) {
+            ForEach(0..<letters.count) { num in
+                Text(String(self.letters[num]))
+                    .padding(5)
+                    .font(.title)
+                    .background(self.enabled ? Color.blue : Color.red)
+                    .offset(self.dragAmount)
+                    .animation(Animation.default.delay(Double(num) / 25))
+            }
+        }
+        .gesture(
+            DragGesture()
+                .onChanged { self.dragAmount = $0.translation }
+                .onEnded { _ in
+                    self.dragAmount = .zero
+                    self.enabled.toggle()
+                }
+        )
+        
 //        Button("Tap Me") {
 //            //            self.animationAmount += 1.0
 //        }
@@ -69,16 +93,18 @@ struct ContentView: View {
 //        .clipShape(Circle())
 //        .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z:1))
         
-        Button("Tap Me") {
-            // do nothing
-            self.enabled.toggle()
-        }
-        .frame(width: 200, height: 200)
-        .background(enabled ? Color.green : Color.red)
-        .animation(nil)
-        .foregroundColor(.white)
-        .clipShape(RoundedRectangle(cornerRadius: enabled ? 60 : 0))
-        .animation(.interpolatingSpring(stiffness: 10, damping: 1))
+//        Button("Tap Me") {
+//            // do nothing
+//            self.enabled.toggle()
+//        }
+//        .frame(width: 200, height: 200)
+//        .background(enabled ? Color.green : Color.red)
+//        .animation(nil)
+//        .foregroundColor(.white)
+//        .clipShape(RoundedRectangle(cornerRadius: enabled ? 60 : 0))
+//        .animation(.interpolatingSpring(stiffness: 10, damping: 1))
+        
+        
         
     }
 }
