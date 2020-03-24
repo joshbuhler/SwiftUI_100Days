@@ -10,7 +10,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        Image(systemName: "calendar")
+            .resizable()
+            .frame(width: 50, height: 50)
+            .background(Color.red)
     }
 }
 
