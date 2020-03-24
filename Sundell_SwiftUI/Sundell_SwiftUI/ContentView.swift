@@ -10,17 +10,23 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        HStack(alignment: .top) {
-            VStack {
-                CalendarView()
-                Spacer()
-            }
+        VStack {
+            EventHeader()
+            Spacer()
+        }.padding()
+    }
+}
+
+struct EventHeader: View {
+    var body: some View {
+        HStack(spacing: 15) {
+            CalendarView()
             VStack(alignment: .leading) {
                 Text("Event title").font(.title)
                 Text("Event location")
             }
             Spacer()
-        }.padding()
+        }
     }
 }
 
