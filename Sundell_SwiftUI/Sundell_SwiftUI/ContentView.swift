@@ -13,7 +13,10 @@ struct ContentView: View {
         Image(systemName: "calendar")
             .resizable()
             .frame(width: 50, height: 50)
+            .padding()
             .background(Color.red)
+            .cornerRadius(10)
+            .foregroundColor(Color.white)
     }
 }
 
