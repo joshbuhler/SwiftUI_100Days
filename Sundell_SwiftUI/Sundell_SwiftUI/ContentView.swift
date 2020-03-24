@@ -31,6 +31,9 @@ struct EventHeader: View {
 }
 
 struct CalendarView: View {
+    
+    var eventIsVerified = true
+    
     var body: some View {
         Image(systemName: "calendar")
             .resizable()
@@ -39,6 +42,20 @@ struct CalendarView: View {
             .background(Color.red)
             .cornerRadius(10)
             .foregroundColor(Color.white)
+            .addVerifiedBadge(eventIsVerified)
+    }
+}
+
+extension View {
+    func addVerifiedBadge(_ isVerified:Bool) -> some View {
+        ZStack(alignment: .topTrailing) {
+            self
+            
+            if (isVerified) {
+                Image(systemName: "checkmark.circle.fill")
+                    .offset(x: 3, y: -3)
+            }
+        }
     }
 }
 
