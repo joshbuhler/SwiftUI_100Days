@@ -13,6 +13,20 @@ struct ContentView: View {
         VStack {
             EventHeader()
             Spacer()
+            HStack{
+                EventInfoBadge(
+                    iconName: "video.circle.fill",
+                    text: "Video call available"
+                )
+                EventInfoBadge(
+                    iconName: "doc.text.fill",
+                    text: "Files are attached"
+                )
+                EventInfoBadge(
+                    iconName: "person.crop.circle.badge.plus",
+                    text: "Invites allowed"
+                )
+            }
         }.padding()
     }
 }
@@ -43,6 +57,20 @@ struct CalendarView: View {
             .cornerRadius(10)
             .foregroundColor(Color.white)
             .addVerifiedBadge(eventIsVerified)
+    }
+}
+
+struct EventInfoBadge:View {
+    var iconName:String
+    var text:String
+    
+    var body: some View {
+        VStack {
+            Image(systemName: iconName)
+                .resizable()
+                .frame(width: 25, height: 25)
+            Text(text)
+        }
     }
 }
 
