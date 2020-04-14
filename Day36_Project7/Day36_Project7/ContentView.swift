@@ -54,7 +54,7 @@ struct SecondView: View {
 struct OnDeleteView:View {
     
     @State private var numbers = [Int]()
-    @State private var currentNumber = 1
+    @State private var currentNumber = UserDefaults.standard.integer(forKey: "Tap")
     
     var body: some View {
         NavigationView {
@@ -69,6 +69,7 @@ struct OnDeleteView:View {
                 Button("Add Number") {
                     self.numbers.append(self.currentNumber)
                     self.currentNumber += 1
+                    UserDefaults.standard.set(self.currentNumber, forKey: "Tap")
                 }
             }
             .navigationBarItems(leading: EditButton())
