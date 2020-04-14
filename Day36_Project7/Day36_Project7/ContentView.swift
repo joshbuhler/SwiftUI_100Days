@@ -15,6 +15,8 @@ class User:ObservableObject {
 
 struct ContentView: View {
     @ObservedObject var user = User()
+    
+    @State private var showingSheet = false
 
     var body: some View {
         VStack {
@@ -22,6 +24,28 @@ struct ContentView: View {
 
             TextField("First name", text: $user.firstName)
             TextField("Last name", text: $user.lastName)
+            
+            Button("Show Some Sheet") {
+                self.showingSheet.toggle()
+            }
+            .sheet(isPresented: $showingSheet) {
+                SecondView(name: self.user.firstName)
+            }
+        }
+    }
+}
+
+struct SecondView: View {
+    var name:String
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    var body: some View {
+        VStack {
+            Text("Howdy, \(name)")
+            Button("Dismiss") {
+                self.presentationMode.wrappedValue.dismiss()
+            }
         }
     }
 }
