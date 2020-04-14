@@ -13,10 +13,16 @@ class User:ObservableObject {
     @Published var lastName = "Baggins"
 }
 
+struct Vehicle:Codable {
+    var make:String
+    var model:String
+}
+
 struct ContentView: View {
     @ObservedObject var user = User()
     
     @State private var showingSheet = false
+    @State private var vehicle:Vehicle = Vehicle(make: "Ford", model: "Ka")
 
     var body: some View {
         VStack {
@@ -25,12 +31,31 @@ struct ContentView: View {
             TextField("First name", text: $user.firstName)
             TextField("Last name", text: $user.lastName)
             
+            TextField("Vehicle:", text: $vehicle.model)
+            
             Button("Show Some Sheet") {
                 self.showingSheet.toggle()
+                
+                let encoder = JSONEncoder()
+                if let data = try? encoder.encode(self.vehicle) {
+                    UserDefaults.standard.set(data, forKey: "vehicle")
+                }
             }
             .sheet(isPresented: $showingSheet) {
 //                SecondView(name: self.user.firstName)
                 OnDeleteView()
+            }
+            
+            Button("Load Saved Vehicle") {
+                self.showingSheet.toggle()
+                
+                let decoder = JSONDecoder()
+                if let saved = UserDefaults.standard.data(forKey: "vehicle"),
+                    let v = try? decoder.decode(Vehicle.self, from: saved) {
+                
+                    self.vehicle = v
+                }
+                
             }
         }
     }
