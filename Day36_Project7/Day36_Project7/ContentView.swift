@@ -29,7 +29,8 @@ struct ContentView: View {
                 self.showingSheet.toggle()
             }
             .sheet(isPresented: $showingSheet) {
-                SecondView(name: self.user.firstName)
+//                SecondView(name: self.user.firstName)
+                OnDeleteView()
             }
         }
     }
@@ -47,6 +48,35 @@ struct SecondView: View {
                 self.presentationMode.wrappedValue.dismiss()
             }
         }
+    }
+}
+
+struct OnDeleteView:View {
+    
+    @State private var numbers = [Int]()
+    @State private var currentNumber = 1
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                List {
+                    ForEach(numbers, id: \.self) {
+                        Text("\($0)")
+                    }
+                    .onDelete(perform: removeRows)
+                }
+                
+                Button("Add Number") {
+                    self.numbers.append(self.currentNumber)
+                    self.currentNumber += 1
+                }
+            }
+            .navigationBarItems(leading: EditButton())
+        }
+    }
+    
+    func removeRows(at offsets: IndexSet) {
+        numbers.remove(atOffsets: offsets)
     }
 }
 
