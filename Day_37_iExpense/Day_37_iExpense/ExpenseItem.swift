@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct ExpenseItem:Identifiable {
+struct ExpenseItem:Identifiable, Codable {
     let id = UUID()
     let name:String
     let type:String
@@ -17,5 +17,29 @@ struct ExpenseItem:Identifiable {
 }
 
 class Expenses: ObservableObject {
-    @Published var items:[ExpenseItem] = [ExpenseItem]()
+    @Published private(set) var items:[ExpenseItem]
+    
+    func addExpense(_ expense:ExpenseItem) {
+        self.items.append(expense)
+        
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(items) {
+            UserDefaults.standard.set(encoded, forKey: "Items")
+        }
+    }
+    
+    func removeExpense(_ offset:IndexSet) {
+        self.items.remove(atOffsets: offset)
+    }
+    
+    init() {
+            let decoder = JSONDecoder()
+            if let items = UserDefaults.standard.data(forKey: "Items"),
+                let decoded = try? decoder.decode([ExpenseItem].self, from: items) {
+                self.items = decoded
+                return
+            }
+        
+        self.items = []
+    }
 }
