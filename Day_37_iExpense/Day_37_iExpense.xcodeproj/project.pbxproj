@@ -15,6 +15,7 @@
 		5C063CA424475F0000BAF316 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C063CA224475F0000BAF316 /* LaunchScreen.storyboard */; };
 		5C063CAF24475F0000BAF316 /* Day_37_iExpenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C063CAE24475F0000BAF316 /* Day_37_iExpenseTests.swift */; };
 		5C063CBA24475F0000BAF316 /* Day_37_iExpenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C063CB924475F0000BAF316 /* Day_37_iExpenseUITests.swift */; };
+		5C063CC824475F5800BAF316 /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C063CC724475F5800BAF316 /* ExpenseItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		5C063CB524475F0000BAF316 /* Day_37_iExpenseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Day_37_iExpenseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C063CB924475F0000BAF316 /* Day_37_iExpenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_37_iExpenseUITests.swift; sourceTree = "<group>"; };
 		5C063CBB24475F0000BAF316 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C063CC724475F5800BAF316 /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				5C063CA224475F0000BAF316 /* LaunchScreen.storyboard */,
 				5C063CA524475F0000BAF316 /* Info.plist */,
 				5C063C9F24475F0000BAF316 /* Preview Content */,
+				5C063CC724475F5800BAF316 /* ExpenseItem.swift */,
 			);
 			path = Day_37_iExpense;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				5C063C9824475EFE00BAF316 /* AppDelegate.swift in Sources */,
 				5C063C9A24475EFE00BAF316 /* SceneDelegate.swift in Sources */,
 				5C063C9C24475EFE00BAF316 /* ContentView.swift in Sources */,
+				5C063CC824475F5800BAF316 /* ExpenseItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
