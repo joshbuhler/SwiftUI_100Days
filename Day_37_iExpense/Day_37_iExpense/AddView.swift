@@ -12,6 +12,8 @@ struct AddView: View {
     
     @ObservedObject var expenses:Expenses
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @State private var name:String = ""
     @State private var type:String = "Personal"
     @State private var amount:String = ""
@@ -37,6 +39,7 @@ struct AddView: View {
                                            type: self.type,
                                            amount: actualAmount)
                     self.expenses.addExpense(item)
+                    self.presentationMode.wrappedValue.dismiss()
                 }
             })
         }
