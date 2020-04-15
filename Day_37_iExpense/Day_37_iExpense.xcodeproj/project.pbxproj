@@ -16,6 +16,7 @@
 		5C063CAF24475F0000BAF316 /* Day_37_iExpenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C063CAE24475F0000BAF316 /* Day_37_iExpenseTests.swift */; };
 		5C063CBA24475F0000BAF316 /* Day_37_iExpenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C063CB924475F0000BAF316 /* Day_37_iExpenseUITests.swift */; };
 		5C063CC824475F5800BAF316 /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C063CC724475F5800BAF316 /* ExpenseItem.swift */; };
+		5C063CCA2447623E00BAF316 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C063CC92447623E00BAF316 /* AddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		5C063CB924475F0000BAF316 /* Day_37_iExpenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_37_iExpenseUITests.swift; sourceTree = "<group>"; };
 		5C063CBB24475F0000BAF316 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C063CC724475F5800BAF316 /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
+		5C063CC92447623E00BAF316 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				5C063C9724475EFE00BAF316 /* AppDelegate.swift */,
 				5C063C9924475EFE00BAF316 /* SceneDelegate.swift */,
+				5C063CC92447623E00BAF316 /* AddView.swift */,
 				5C063C9B24475EFE00BAF316 /* ContentView.swift */,
 				5C063C9D24475F0000BAF316 /* Assets.xcassets */,
 				5C063CA224475F0000BAF316 /* LaunchScreen.storyboard */,
@@ -272,6 +275,7 @@
 			files = (
 				5C063C9824475EFE00BAF316 /* AppDelegate.swift in Sources */,
 				5C063C9A24475EFE00BAF316 /* SceneDelegate.swift in Sources */,
+				5C063CCA2447623E00BAF316 /* AddView.swift in Sources */,
 				5C063C9C24475EFE00BAF316 /* ContentView.swift in Sources */,
 				5C063CC824475F5800BAF316 /* ExpenseItem.swift in Sources */,
 			);
