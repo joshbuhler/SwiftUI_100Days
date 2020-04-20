@@ -18,6 +18,16 @@ struct ContentView: View {
                     .frame(width: geo.size.width)
                     .clipped()
             }
+            
+            ScrollView(.vertical) {
+                VStack(spacing: 10) {
+                    ForEach(0..<100) {
+                        Text("Item \($0)")
+                            .font(.title)
+                    }
+                }
+                .frame(maxWidth: .infinity)
+            }
         }
     }
 }
