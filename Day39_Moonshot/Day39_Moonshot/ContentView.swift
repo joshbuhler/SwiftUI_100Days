@@ -10,24 +10,23 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            GeometryReader { geo in
-                Image("bronco")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: geo.size.width)
-                    .clipped()
-            }
-            
-            ScrollView(.vertical) {
-                VStack(spacing: 10) {
-                    ForEach(0..<100) {
-                        Text("Item \($0)")
-                            .font(.title)
+        NavigationView {
+            VStack {
+                GeometryReader { geo in
+                    Image("bronco")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: geo.size.width)
+                        .clipped()
+                }
+                
+                List(0..<100) { row in
+                    NavigationLink(destination: Text("Detail View: \(row)")) {
+                        Text("Row \(row)")
                     }
                 }
-                .frame(maxWidth: .infinity)
             }
+        .navigationBarTitle("SwiftUI")
         }
     }
 }
